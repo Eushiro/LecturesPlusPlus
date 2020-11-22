@@ -31,6 +31,10 @@
   z-index: 9999999;
 }
 
+input[type='text'] {
+  font-family: "Open Sans", sans-serif;
+}
+
 #controller:hover {
   opacity: 0.7;
 }
@@ -86,22 +90,16 @@ p.transcript:hover {
 
 
 .buttonToggle {
-  margin-left: 25px;
-  margin-bottom: -12px;
   width: 140px;
-  height: 40px;
-  background: linear-gradient(to bottom, #4eb5e5 0%, #389ed5 100%); /* W3C */
+  height:40px;
+  background-color: #924afe;
+  color: white;
+  /* margin: 8px 0; */
+  margin-left: 22px;
   border: none;
-  border-radius: 5px;
-  position: relative;
-  border-bottom: 4px solid #2b8bc6;
-  color: #fbfbfb;
-  font-weight: 600;
+  border-radius: 4px;
   font-family: "Open Sans", sans-serif;
-  font-size: 15px;
-  text-align: left;
-  text-indent: 5px;
-  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -115,14 +113,22 @@ p.transcript:hover {
 }
 
 .submitter {
-  font-weight: 500;
+  font-weight: 600;
+  width: 78px;
+  height: 32px;
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
-  text-align: left;
-  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.2);
+  background-color: #924afe;
+  color: white;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-.comment {
+.commentStyles {
+  font-weight: 600;
+}
+
+.comment, #questionBox {
   font-family: "Open Sans", sans-serif;
 }

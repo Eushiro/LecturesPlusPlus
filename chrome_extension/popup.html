@@ -7,8 +7,9 @@
     <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="popup.js"></script>
 </head>
-<body>
-    <div id="settings">
+<body id="settings">
+        <p id="lppTitle">Lectures++</p>
+        <br>
         <div id="video_info">
             <span id="video_url_p">Video URL: <span><span id="popup_p1"></span>
             <p></p>
@@ -29,7 +30,7 @@
         <p></p>
         <form id="popup_inputform">
             <label for="upperbound_speech">Max Speedup when Speaking (Min 1x)</label><br>
-            <input type="number" id="upperbound_speech" value=2.5 min=1 max=10 step=0.1><br>
+            <input type="number" id="upperbound_speech" value=2.5 min=1 max=10 step=0.1><br><br>
             <label for="wpm_target">Target Words per Minute when Speaking</label><br>
             <input type="number" id="wpm_target" value=250 min=50 max=1000 step=1><br><br>
             <label for="upperbound">Max Speedup when Not Speaking</label><br>
@@ -38,8 +39,5 @@
             <input type="number" id="lowerbound" value=2 min=0.5 max=10 step=0.1><br><br>
             <input type="submit" value="Save Settings">
         </form>         
-    </div>
-
- 
 </body>
 </html>
