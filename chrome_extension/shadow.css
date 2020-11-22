@@ -105,8 +105,10 @@ p.transcript:hover {
 
 .dragger {
   position: absolute;
-  height: 35px;
-  width: 35px;
+  filter: opacity(0.5);
+  height: 30px;
+  width: 30px;
+  padding: 5px;
   margin-left: 100px;
   margin-bottom: -12px;
   cursor: move;

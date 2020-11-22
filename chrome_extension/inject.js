@@ -668,11 +668,8 @@ function viewToggleOnClick() {
             transcript = "";
             transcriptArray = parseSrtForTranscript(saved_videos[videoUrlOnPage].srt);
             let index = 0;
-            var lastColor = 0;
             for (let line of transcriptArray) {
-                var generatedColor = colors[lastColor]
-                lastColor = (lastColor + 1) % colors.length
-                transcript += `<p class="transcript" data-index="${index}" data-timestamp="${line[0]}"><span class="commentStyles" style="color:${generatedColor}">${line[0].split(",")[0]}</span>: ${line[1]}</p>`;
+                transcript += `<p class="transcript" data-index="${index}" data-timestamp="${line[0]}"><span class="commentStyles" style="color:#af7afe">${line[0].split(",")[0]}</span>: ${line[1]}</p>`;
                 index++;
             }
         }
@@ -741,7 +738,7 @@ function createCommentView(video) {
 
     wrapper.id = ("commentView");
     wrapper.style.position = "absolute";
-    var wrapperHeight = Math.min(350, (25 * comments.length) + 85)
+    var wrapperHeight = 350
     wrapper.style.width = commentBoxWidth + "px"
     wrapper.style.overflowX = "auto";
     wrapper.style.overflowY = "hidden";
@@ -756,7 +753,7 @@ function createCommentView(video) {
             @import "${chrome.runtime.getURL("shadow.css")}";
           </style>
           <button id="viewToggle" class="buttonToggle">View Transcript</button>
-          <img src="${chrome.extension.getURL("dragHandle.png")}" class="dragger" id="dragHandle">
+          <img src="${chrome.extension.getURL("dragHandle.svg")}" class="dragger" id="dragHandle">
           <div id="controller" style="top:${top}; left:${left}; opacity:${controllerOpacity}; height: ${wrapperHeight}px; width:${commentBoxWidth - 70}px; position: relative; overflow-y: scroll">
           `;
     // Add comments under the commentBox div
@@ -829,16 +826,21 @@ function fancyTimeFormat(duration) {
 }
 
 function dragElement(elmnt, draggingElement) {
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     if (document.getElementById(elmnt.id + "header")) {
         document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
     } else {
         elmnt.onmousedown = dragMouseDown;
     }
+
+    let prevX;
+    let prevY;
+
     function dragMouseDown(e) {
         e = e || window.event;
         document.onmouseup = closeDragElement;
         document.onmousemove = elementDrag;
+        prevX = e.pageX;
+        prevY = e.pageY;
         return false;
     }
 
@@ -850,8 +852,14 @@ function dragElement(elmnt, draggingElement) {
             draggingElement.style.right = "0px";
         }
 
-        draggingElement.style.top = parseFloat(draggingElement.style.top.split("p")[0]) + e.movementY / window.devicePixelRatio + "px";
-        draggingElement.style.right = parseFloat(draggingElement.style.right.split("p")[0]) - e.movementX / window.devicePixelRatio + "px";
+        let dx = e.pageX - prevX;
+        let dy = e.pageY - prevY;
+
+        prevX = e.pageX;
+        prevY = e.pageY;
+
+        draggingElement.style.top = parseFloat(draggingElement.style.top.split("p")[0]) + dy + "px";
+        draggingElement.style.right = parseFloat(draggingElement.style.right.split("p")[0]) - dx + "px";
 
     }
 
