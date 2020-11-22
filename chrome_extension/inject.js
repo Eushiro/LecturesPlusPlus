@@ -733,7 +733,7 @@ var colors = ['#FFBE0B', '#8338EC', '#FB5607', '#3A86FF', '#FF006E',
 
 function createCommentView(video) {
     var document = video.ownerDocument;
-    var controllerOpacity = 0.7;
+    var controllerOpacity = 0.85;
     var wrapper = document.createElement("div");
     var top = Math.max(video.offsetTop, 0) + "px";
     var left = Math.max(video.offsetLeft, 0) + "px";
