@@ -40,11 +40,11 @@
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: #9147ff;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px #9147ff;
 }
 
 input:checked + .slider:before {
@@ -74,7 +74,7 @@ input[type="number"] {
 
 input[type="submit"] {
   width: 80%;
-  background-color: #4caf50;
+  background-color: #924afe;
   color: white;
   padding: 15px;
   /* margin: 8px 0; */
@@ -89,7 +89,7 @@ input[type="submit"]:hover {
 
 #downloadFile {
   width: 80%;
-  background-color: #4eb5e5;
+  background-color: #924afe;
   color: white;
   padding: 15px;
   /* margin: 8px 0; */
@@ -98,7 +98,7 @@ input[type="submit"]:hover {
   cursor: pointer;
 }
 #downloadFile:hover {
-  background-color: #389ed5;
+  background-color: #924afe;
 }
 
 #settings {
