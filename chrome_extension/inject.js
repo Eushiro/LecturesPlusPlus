@@ -568,6 +568,7 @@ const apiEndpoint = "https://pc2.jackyliao.me/"
 var commentViews = []
 var pageVideo;
 var comments;
+var transcriptArray = [];
 var transcript = ""
 var shadowOfController;
 var commentView;
@@ -576,7 +577,48 @@ async function initializeNow() {
     var mediaTags = document.querySelectorAll("video");
     if (mediaTags.length > 0) {
 		pageVideo = mediaTags[0];
-		videoUrlOnPage = pageVideo.currentSrc;
+        videoUrlOnPage = pageVideo.currentSrc;
+
+        let prevIndex = 0;
+
+        pageVideo.addEventListener("timeupdate", ev => {
+            let index = 0;
+            let ts;
+			let lastIndex = 0;
+			if(transcriptArray.length > 2) {
+				do {
+					lastIndex = index;
+					index ++;
+					let stringTs = transcriptArray[index][0].split(",")[0].split(":");
+					ts = stringTs[0] * 3600 + stringTs[1] * 60 + parseInt(stringTs[2]) + transcriptArray[index][0].split(",")[1] / 1000;
+				} while(index < transcriptArray.length && ts <= pageVideo.currentTime);
+				if(lastIndex != prevIndex) {
+					for(let elem of commentView.shadowRoot.querySelectorAll("p.transcript")) {
+						elem.classList.remove("highlighted");
+					}
+					for(let elem of commentView.shadowRoot.querySelectorAll("p.transcript[data-index=\"" + lastIndex + "\"]")) {
+						elem.classList.add("highlighted");
+						elem.scrollIntoView({behavior: "smooth", block: "center"});
+						console.log(elem);
+					}
+					prevIndex = lastIndex;
+				}
+            }
+			for(let elem of commentView.shadowRoot.querySelectorAll("p.comment")) {
+                let elementTime = elem.getAttribute("data-timestamp");
+                let toShow = elementTime < pageVideo.currentTime;
+                let wasShown = !elem.classList.contains("hidden");
+                if(toShow != wasShown) {
+                    if(toShow) {
+                        elem.classList.remove("hidden");
+                        elem.scrollIntoView({block: "end"});
+                    } else {
+                        //elem.classList.add("hidden");
+                    }
+                }
+            }
+        });
+
         await getComments()
         addCommentViewToPage()
     }
@@ -621,9 +663,11 @@ function viewToggleOnClick() {
 
         if (saved_videos[videoUrlOnPage] && saved_videos[videoUrlOnPage].srt) {
             transcript = "";
-            const transcriptList = parseSrtForTranscript(saved_videos[videoUrlOnPage].srt);
-            for(let line of transcriptList) {
-                transcript += `<p class="transcript" data-timestamp="${line[0].split(",")[0]}">${line[0].split(",")[0]} ${line[1]}</p>`;
+            transcriptArray = parseSrtForTranscript(saved_videos[videoUrlOnPage].srt);
+            let index = 0;
+            for(let line of transcriptArray) {
+                transcript += `<p class="transcript" data-index="${index}" data-timestamp="${line[0]}">${line[0].split(",")[0]}: ${line[1]}</p>`;
+                index ++;
             }
         }
         else {
@@ -631,7 +675,13 @@ function viewToggleOnClick() {
         }
 
         shadowOfController.querySelector("#transcript").innerHTML = transcript;
-        for(let elem of shadowOfController.querySelector("#transcript"))
+        for(let elem of shadowOfController.querySelectorAll("#transcript > .transcript")) {
+            elem.onclick = (ev) => {
+                const splt = ev.target.getAttribute("data-timestamp").split(":");
+                const timestamp = splt[0] * 3600 + splt[1] * 60 + parseInt(splt[2]);
+                pageVideo.currentTime = timestamp;
+            };
+        }
 
     } else {
         shadowOfController.querySelector("#controller").style.display = "block"
@@ -655,6 +705,20 @@ async function submitButtonOnClick(e) {
         await getComments()
         refreshCommentView()
         commentView.setAttribute("style", savedStyle);
+        for (let elem of commentView.shadowRoot.querySelectorAll("p.comment")) {
+            let elementTime = elem.getAttribute("data-timestamp");
+            let toShow = elementTime < pageVideo.currentTime;
+            let wasShown = !elem.classList.contains("hidden");
+            if (toShow != wasShown) {
+                if (toShow) {
+                    elem.classList.remove("hidden");
+                    elem.scrollIntoView({ block: "end" });
+                } else {
+                    //elem.classList.add("hidden");
+                }
+            }
+        }
+
     }
 }
 
@@ -692,7 +756,7 @@ function createCommentView(video) {
     } else {
         for (var i = 0; i < comments.length; i += 1) {
             time = fancyTimeFormat(comments[i].timestamp);
-            shadowTemplate += `<p href="#" class="comment" data-timestamp="${comments[i].timestamp}">(${time}): ${comments[i].comment}</p>`;
+            shadowTemplate += `<p class="comment hidden" data-timestamp="${comments[i].timestamp}">(${time}): ${comments[i].comment}</p>`;
         }
     }
     // Close the div
@@ -772,8 +836,8 @@ function dragElement(elmnt, draggingElement) {
             draggingElement.style.right = "0px";
         }
 
-        draggingElement.style.top = parseInt(draggingElement.style.top.split("p")[0]) + e.movementY + "px";
-        draggingElement.style.right = parseInt(draggingElement.style.right.split("p")[0]) - e.movementX + "px";
+        draggingElement.style.top = parseFloat(draggingElement.style.top.split("p")[0]) + e.movementY / window.devicePixelRatio + "px";
+        draggingElement.style.right = parseFloat(draggingElement.style.right.split("p")[0]) - e.movementX / window.devicePixelRatio + "px";
 
     }
 

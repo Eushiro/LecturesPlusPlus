@@ -11,28 +11,30 @@
     <div id="settings">
         <div id="video_info">
             <span id="video_url_p">Video URL: <span><span id="popup_p1"></span>
-            <br>
+            <p></p>
             <span id="watchtime_p">Watch Time: </span><span id="watchtime"></span>  
-            <br>
+            <p></p>
             <span id="speed_p">Current Speed: </span><span id="speed"></span>  
-            <br>
+            <p></p>
 
             <button id="downloadFile">Download</button>
             <p id="downloadStatus" style="color: red"></p>      
         </div>
         <p>Enable Auto Speedup</p>
+        <p></p>
         <label class="switch" for="enableSpeedup">
             <input type="checkbox" id="enableSpeedup" >        
             <span class="slider round"></span>
         </label>
+        <p></p>
         <form id="popup_inputform">
-            <label for="upperbound_speech">Upper bound for speech sections (Lower bound is 1)</label><br>
+            <label for="upperbound_speech">Max Speedup when Speaking (Min 1x)</label><br>
             <input type="number" id="upperbound_speech" value=2.5 min=1 max=10 step=0.1><br>
-            <label for="wpm_target">WPM target for speech sections</label><br>
+            <label for="wpm_target">Target Words per Minute when Speaking</label><br>
             <input type="number" id="wpm_target" value=250 min=50 max=1000 step=1><br><br>
-            <label for="upperbound">Upper bound for non speech sections</label><br>
+            <label for="upperbound">Max Speedup when Not Speaking</label><br>
             <input type="number" id="upperbound" value=5 min=1 max=10 step=0.1><br><br>
-            <label for="lowerbound">Lower bound for non speech sections</label><br>
+            <label for="lowerbound">Min Speedup when Not Speaking</label><br>
             <input type="number" id="lowerbound" value=2 min=0.5 max=10 step=0.1><br><br>
             <input type="submit" value="Save Settings">
         </form>         

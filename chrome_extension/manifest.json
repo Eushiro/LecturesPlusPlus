@@ -21,12 +21,7 @@
 		  ],
 		  "css": ["inject.css"],
 		  "js": ["inject.js"]
-		}//,
-//		{
-//		  "matches": ["*://*/*"],
-//		  "js": ["content.js"],
-//		  "run_at": "document_start"
-//		}
+		}
 	  ],
 	  "web_accessible_resources": ["inject.css", "shadow.css", "dragHandle.png"]
 

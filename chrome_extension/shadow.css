@@ -19,7 +19,7 @@
   top: 0;
   left: 0;
   width: 100%;
-
+  font-family: "Open Sans", sans-serif;
   background: black;
   color: white;
 
@@ -72,9 +72,19 @@ p.transcript {
   cursor: pointer;
 }
 
+p.transcript.highlighted {
+  background-color: #404000;
+}
+
 p.transcript:hover {
   background-color: #202020;
 }
+
+.hidden {
+  display: none;
+}
+
+
 .buttonToggle {
   margin-left: 25px;
   margin-bottom: -12px;
@@ -88,7 +98,6 @@ p.transcript:hover {
   color: #fbfbfb;
   font-weight: 600;
   font-family: "Open Sans", sans-serif;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
   font-size: 15px;
   text-align: left;
   text-indent: 5px;
@@ -112,4 +121,8 @@ p.transcript:hover {
   text-align: left;
   box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+}
+
+.comment {
+  font-family: "Open Sans", sans-serif;
 }

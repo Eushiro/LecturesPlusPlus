@@ -87,6 +87,20 @@ input[type="submit"]:hover {
   background-color: #45a049;
 }
 
+#downloadFile {
+  width: 80%;
+  background-color: #4eb5e5;
+  color: white;
+  padding: 15px;
+  /* margin: 8px 0; */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#downloadFile:hover {
+  background-color: #389ed5;
+}
+
 #settings {
   border-radius: 5px;
   background-color: #f2f2f2;
@@ -95,6 +109,7 @@ input[type="submit"]:hover {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   min-width: 400px;
+  font-size: 30;
 }
