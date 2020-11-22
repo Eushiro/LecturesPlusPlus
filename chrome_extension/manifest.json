@@ -1,0 +1,33 @@
+{
+	"manifest_version": 2,
+	"name": "Lectures++",
+	"description": "Watch lectures better",
+	"version": "1.0",
+	"browser_action": {
+		"default_popup": "popup.html"
+	},
+	"permissions": [
+		"storage"
+	],
+	"content_scripts": [
+		{
+		  "all_frames": true,
+		  "matches": ["http://*/*", "https://*/*", "file:///*"],
+		  "match_about_blank": true,
+		  "exclude_matches": [
+			"https://plus.google.com/hangouts/*",
+			"https://hangouts.google.com/*",
+			"https://meet.google.com/*"
+		  ],
+		  "css": ["inject.css"],
+		  "js": ["inject.js"]
+		},
+		{
+		  "matches": ["*://*/*"],
+		  "js": ["content.js"],
+		  "run_at": "document_start"
+		}
+	  ],
+	  "web_accessible_resources": ["inject.css", "shadow.css", "dragHandle.png"]
+
+}

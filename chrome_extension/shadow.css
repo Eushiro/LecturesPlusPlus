@@ -1,0 +1,108 @@
+* {
+  line-height: 1.8em;
+  font-family: sans-serif;
+  font-size: 13px;
+}
+
+.toggleButton {
+  padding: 6px 12px 6px 12px;
+  margin: 10px 10px 10px 15px;
+}
+
+:host(:hover) #controls {
+  display: inline;
+}
+
+#controller,
+#transcript {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  background: black;
+  color: white;
+
+  /* border-radius: 20px; */
+  padding: 6px 12px 6px 12px;
+  margin: 10px 10px 10px 15px;
+
+  cursor: default;
+  z-index: 9999999;
+}
+
+#controller:hover {
+  opacity: 0.7;
+}
+
+#controller:hover > .draggable {
+  margin-right: 0.8em;
+}
+
+#controls {
+  display: none;
+}
+
+#controller.dragging {
+  cursor: -webkit-grabbing;
+  opacity: 0.7;
+}
+
+#controller.dragging #controls {
+  display: inline;
+}
+
+.draggable {
+  cursor: -webkit-grab;
+}
+
+.draggable:active {
+  cursor: -webkit-grabbing;
+}
+
+p.comment {
+  cursor: pointer;
+}
+
+p.comment:hover {
+  background-color: #202020;
+}
+
+.buttonToggle {
+  margin-left: 25px;
+  margin-bottom: -12px;
+  width: 140px;
+  height: 40px;
+  background: linear-gradient(to bottom, #4eb5e5 0%, #389ed5 100%); /* W3C */
+  border: none;
+  border-radius: 5px;
+  position: relative;
+  border-bottom: 4px solid #2b8bc6;
+  color: #fbfbfb;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  font-size: 15px;
+  text-align: left;
+  text-indent: 5px;
+  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.dragger {
+  position: absolute;
+  height: 35px;
+  width: 35px;
+  margin-left: 100px;
+  margin-bottom: -12px;
+  cursor: move;
+}
+
+.submitter {
+  font-weight: 500;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  text-align: left;
+  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}

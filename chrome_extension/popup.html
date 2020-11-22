@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>Popup</title>
+	<link rel="stylesheet" type="text/css" href="popup.css">
+    <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="popup.js"></script>
+</head>
+<body>
+    <div id="settings">
+        <div id="video_info">
+            <span id="video_url_p">Video URL: <span><span id="popup_p1"></span>
+            <br>
+            <span id="watchtime_p">Watch Time: </span><span id="watchtime"></span>  
+            <br>
+            <span id="speed_p">Current Speed: </span><span id="speed"></span>  
+            <br>
+
+            <button id="downloadFile">Download</button>
+            <p id="downloadStatus" style="color: red"></p>      
+        </div>
+        <p>Enable Auto Speedup</p>
+        <label class="switch" for="enableSpeedup">
+            <input type="checkbox" id="enableSpeedup" >        
+            <span class="slider round"></span>
+        </label>
+        <form id="popup_inputform">
+            <label for="upperbound_speech">Upper bound for speech sections (Lower bound is 1)</label><br>
+            <input type="number" id="upperbound_speech" value=2.5 min=1 max=10 step=0.1><br>
+            <label for="wpm_target">WPM target for speech sections</label><br>
+            <input type="number" id="wpm_target" value=250 min=50 max=1000 step=1><br><br>
+            <label for="upperbound">Upper bound for non speech sections</label><br>
+            <input type="number" id="upperbound" value=5 min=1 max=10 step=0.1><br><br>
+            <label for="lowerbound">Lower bound for non speech sections</label><br>
+            <input type="number" id="lowerbound" value=2 min=0.5 max=10 step=0.1><br><br>
+            <input type="submit" value="Save Settings">
+        </form>         
+    </div>
+
+ 
+</body>
+</html>
