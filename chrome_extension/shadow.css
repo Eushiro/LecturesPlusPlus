@@ -68,6 +68,13 @@ p.comment:hover {
   background-color: #202020;
 }
 
+p.transcript {
+  cursor: pointer;
+}
+
+p.transcript:hover {
+  background-color: #202020;
+}
 .buttonToggle {
   margin-left: 25px;
   margin-bottom: -12px;

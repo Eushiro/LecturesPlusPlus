@@ -545,6 +545,22 @@ let downloadFile = (url, urlid, statusUpdate) => new Promise((resolve, reject) =
 		xmlHttp.send();
 	});
 });
+
+function parseSrtForTranscript(srt){
+    let blocks = srt.split("\n\n");
+    console.log("#blocks: " + blocks.length);
+    let res = [];
+
+    for(let i = 0; i < blocks.length; i++){
+      let lines = blocks[i].split("\n");
+      if(lines.length == 0) continue;
+      let times = lines[1].split(" --> ");
+      res.push([times[0], lines[2]]);
+
+    }
+    return res;
+}
+
 /////////
 
 
@@ -559,11 +575,13 @@ var commentView;
 async function initializeNow() {
     var mediaTags = document.querySelectorAll("video");
     if (mediaTags.length > 0) {
-        pageVideo = mediaTags[0]
+		pageVideo = mediaTags[0];
+		videoUrlOnPage = pageVideo.currentSrc;
         await getComments()
         addCommentViewToPage()
     }
 }
+
 
 function addCommentViewToPage() {
     commentView = createCommentView(pageVideo)
@@ -600,6 +618,21 @@ function viewToggleOnClick() {
         shadowOfController.querySelector("#transcript").style.display = "block"
         buttonText = "View Comments"
         shadowOfController.querySelector("#viewToggle").textContent = buttonText
+
+        if (saved_videos[videoUrlOnPage] && saved_videos[videoUrlOnPage].srt) {
+            transcript = "";
+            const transcriptList = parseSrtForTranscript(saved_videos[videoUrlOnPage].srt);
+            for(let line of transcriptList) {
+                transcript += `<p class="transcript" data-timestamp="${line[0].split(",")[0]}">${line[0].split(",")[0]} ${line[1]}</p>`;
+            }
+        }
+        else {
+            transcript = "Please open the popup and download it"
+        }
+
+        shadowOfController.querySelector("#transcript").innerHTML = transcript;
+        for(let elem of shadowOfController.querySelector("#transcript"))
+
     } else {
         shadowOfController.querySelector("#controller").style.display = "block"
         shadowOfController.querySelector("#transcript").style.display = "none"
