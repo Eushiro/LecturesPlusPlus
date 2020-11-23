@@ -54,7 +54,7 @@ app.post("/upload-file/:id", (req, res) => {
 
 app.get("/generate-caption/:id", (req, res) => {
 	let id = sha256(decodeURIComponent(req.params.id));
-	let process = childProcess.spawn("/usr/bin/autosub", [id, "-F", "srt"], {cwd: "cache", stdio: ["pipe", "pipe", "pipe"]});
+	let process = childProcess.spawn("/usr/local/bin/autosub", [id, "-F", "srt"], {cwd: "cache", stdio: ["pipe", "pipe", "pipe"]});
 
 	process.stdout.on("data", (data) => {
 		for(let i = 0; i < data.length; ++i) {

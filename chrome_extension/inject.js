@@ -458,7 +458,7 @@ function upload(audioBuffer, id) {
                 reject(xmlHttp.responseText);
             }
         };
-        xmlHttp.open("POST", "https://pc2.jackyliao.me/upload-file/" + id);
+        xmlHttp.open("POST", apiEndpoint + "upload-file/" + id);
         xmlHttp.send(audioBufferToWav(audioBuffer));
     });
 }
@@ -478,7 +478,7 @@ function beginCaption(id, statusUpdate) {
                 }
             }
         };
-        xmlHttp.open("GET", "https://pc2.jackyliao.me/generate-caption/" + id);
+        xmlHttp.open("GET", apiEndpoint + "generate-caption/" + id);
         xmlHttp.send();
     });
 }
@@ -492,7 +492,7 @@ function downloadCaption(id) {
                 reject(xmlHttp.responseText);
             }
         };
-        xmlHttp.open("GET", "https://pc2.jackyliao.me/download-caption/" + id);
+        xmlHttp.open("GET", apiEndpoint + "download-caption/" + id);
         xmlHttp.send();
     });
 }
@@ -567,7 +567,7 @@ function parseSrtForTranscript(srt) {
 /////////
 
 
-const apiEndpoint = "https://pc2.jackyliao.me/"
+const apiEndpoint = "http://localhost:8081/"
 var commentViews = []
 var pageVideo;
 var comments;
