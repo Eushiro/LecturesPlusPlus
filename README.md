@@ -2,6 +2,10 @@
 Hack Western 7 Project
 <br/>
 By: Hiro Ayettey, Jacky Liao, Cindy Wang
+## Demo
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/TL1MenCiktk)
+
+
 ## Inspiration
 During the pandemic, most people are taking courses online, and with that comes many hours of lectures to watch per week. Often, these recorded lectures include long intervals of the prof writing on the board without talking, and it would save a lot of time to speed through these. People also have small attention spans nowadays, largely due to social media, so being able to get through the boring parts of lectures as quick as possible is great for keeping viewers engaged.
 
