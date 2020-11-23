@@ -1,7 +1,12 @@
 # Lectures++
+Automatically speed up through the boring parts of lectures; see a live chat of people's comments and questions; Ctrl-F through the lecture transcript to find what you're looking for instantly.
+<br>
+<br>
 Hack Western 7 Project
-<br/>
-By: Hiro Ayettey, Jacky Liao, Cindy Wang
+<br>
+By Hiro Ayettey, Jacky Liao, Cindy Wang
+
+
 ## Demo
 <img src="https://github.com/Eushiro/Gifs/blob/master/Lectures++.gif" width="80%" height="80%">
 
