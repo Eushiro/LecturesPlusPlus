@@ -704,8 +704,9 @@ var questionBoxText = ""
 async function submitButtonOnClick(e) {
     if (questionBoxText.trim() != "") {
         let savedStyle = commentView.getAttribute("style");
-        await postComment(questionBoxText, Math.floor(pageVideo.currentTime))
+        await postComment(questionBoxText.trim(), Math.floor(pageVideo.currentTime))
         await getComments()
+        questionBoxText = ""
         refreshCommentView()
         commentView.setAttribute("style", savedStyle);
         for (let elem of commentView.shadowRoot.querySelectorAll("p.comment")) {
