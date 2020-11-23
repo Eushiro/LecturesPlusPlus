@@ -3,7 +3,7 @@ Hack Western 7 Project
 <br/>
 By: Hiro Ayettey, Jacky Liao, Cindy Wang
 ## Demo
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/TL1MenCiktk)
+<img src="https://github.com/Eushiro/Gifs/blob/master/Lectures++.gif" width="80%" height="80%">
 
 
 ## Inspiration
