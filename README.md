@@ -2,7 +2,7 @@
 Automatically speed up through the boring parts of lectures; see a live chat of people's comments and questions; Ctrl-F through the lecture transcript to find what you're looking for instantly.
 <br>
 <br>
-Hack Western 7 Project
+Built at Hack Western 7
 <br>
 By Hiro Ayettey, Jacky Liao, Cindy Wang
 
