@@ -10,6 +10,15 @@ By Hiro Ayettey, Jacky Liao, Cindy Wang
 ## Demo
 <img src="https://github.com/Eushiro/Gifs/blob/master/Lectures++.gif" width="80%" height="80%">
 
+## Usage
+
+#### Prequisite
+You will need to install `https://github.com/agermanidis/autosub` and have it saved at `/usr/local/bin/autosub`
+
+1. Open the backend folder and create the directories, `comments/` and `cache/`, inside of it
+2. Run `npm install` from the backend folder
+3. Run `node app.js` from the backend folder
+4. Unpack the folder chrome_extension in Google Chrome
 
 ## Inspiration
 During the pandemic, most people are taking courses online, and with that comes many hours of lectures to watch per week. Often, these recorded lectures include long intervals of the prof writing on the board without talking, and it would save a lot of time to speed through these. People also have small attention spans nowadays, largely due to social media, so being able to get through the boring parts of lectures as quick as possible is great for keeping viewers engaged.
