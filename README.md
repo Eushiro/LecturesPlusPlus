@@ -12,9 +12,10 @@ By Hiro Ayettey, Jacky Liao, Cindy Wang
 
 ## Usage
 
-#### Prequisite
+#### Prequisites
 You will need to install `https://github.com/agermanidis/autosub` and have it saved at `/usr/local/bin/autosub`
 
+#### Steps
 1. Open the backend folder and create the directories, `comments/` and `cache/`, inside of it
 2. Run `npm install` from the backend folder
 3. Run `node app.js` from the backend folder
