@@ -9,7 +9,6 @@ const bodyParser = require("body-parser");
 const net = require("net");
 const sha256 = require("sha256");
 
-
 const config = JSON.parse(stripJsonComments(fs.readFileSync("config.json").toString("utf-8")));
 
 const app = express();
@@ -17,23 +16,6 @@ app.disable("x-powered-by");
 app.use(bodyParser.json());
 
 expressWs(app);
-
-function makeid(length) {
-	var result           = '';
-	var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-	var charactersLength = characters.length;
-	for ( var i = 0; i < length; i++ ) {
-		result += characters.charAt(Math.floor(Math.random() * charactersLength));
-	}
-	return result;
-}
-
-//app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(bodyParser.raw({
-//	inflate: true,
-//	limit: '1000000kb',
-//	type: 'application/octet-stream'
-//}));
 
 app.use(express.static("public"));
 app.use(function(req, res, next) {
@@ -125,6 +107,7 @@ app.post("/get-comments", (req, res) => {
 	})
 });
 
-app.listen(config.server.port, () => {
-	console.log("Listening on " + config.server.port);
+app.listen(process.env.PORT || 5000, () => {
+	let port = process.env.PORT || 5000;
+	console.log("Listening on " + port);
 });

@@ -567,7 +567,8 @@ function parseSrtForTranscript(srt) {
 /////////
 
 
-const apiEndpoint = "http://localhost:8081/"
+const apiEndpoint = "https://lectures-plus-plus.herokuapp.com/"
+// const apiEndpoint = "http://localhost:9000/"
 var commentViews = []
 var pageVideo;
 var comments;
